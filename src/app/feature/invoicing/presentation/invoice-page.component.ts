@@ -8,9 +8,9 @@ import { RegisterInvoiceUseCase } from '../application/register-invoice.use-case
 export class InvoicePageComponent implements OnInit {
   private registerInvoiceUseCase = inject(RegisterInvoiceUseCase);
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     for (let i = 1; i <= 20; i++) {
-      this.registerInvoiceUseCase.execute({
+      await this.registerInvoiceUseCase.execute({
         id: `${i}`,
         total: Math.ceil(Math.random() * 100),
       });
